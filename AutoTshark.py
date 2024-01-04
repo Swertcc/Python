@@ -51,7 +51,7 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     websites_file = "website.txt"
-    num_visits = 10
+    num_visits = 100
     count = 1
     with open(websites_file, "r") as file:
         websites = file.read().splitlines()
