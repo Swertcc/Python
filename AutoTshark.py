@@ -28,7 +28,7 @@ def visit_website(url, num_visits, count):
     # 命名每个pcap文件，例如：result_1.pcapng
     pcap_filename = f"C:\\Users\\swert\\Desktop\\Python12.31-1.5\\result\\pnc\\result_{count}.pcapng"
     # 启动新的tshark捕获流量
-    start_tshark(pcap_filename)
+    tshark_process = start_tshark(pcap_filename)
 
     for visit_count in range(1, num_visits + 1):
 
@@ -43,7 +43,7 @@ def visit_website(url, num_visits, count):
     driver.quit()
 
     # 最后一次访问结束后停止tshark
-    stop_tshark()
+    stop_tshark(tshark_process)
 
 
 if __name__ == "__main__":
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     websites_file = "website.txt"
-    num_visits = 100
+    num_visits = 10
     count = 1
     with open(websites_file, "r") as file:
         websites = file.read().splitlines()
